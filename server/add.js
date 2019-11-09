@@ -16,14 +16,15 @@ router.post('/', (req, res) => {
 			console.log('SEARCH SUCCESSFUL')
 			res.send({status: 200, results: results});
 		} else {
+			console.log('no search completed')
 			//req.body.userId
-			db.query(insert_query, [req.body.searchTerm, req.body.location, req.body.date, ], (err, results) => {
-				if(err){
-					res.send(err);
-				}
-				else(res.send({status: 200, results: 'entry added'}))
-				console.log('INPUT SUCCESSFUL')
-			})
+			// db.query(insert_query, [req.body.searchTerm, req.body.location, req.body.date, ], (err, results) => {
+			// 	if(err){
+			// 		res.send(err);
+			// 	}
+			// 	else(res.send({status: 200, results: 'entry added'}))
+			// 	console.log('INPUT SUCCESSFUL')
+			// })
 		}
 	});
 })

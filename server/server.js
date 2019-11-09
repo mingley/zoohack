@@ -8,30 +8,6 @@ app.use(bodyParser.json())
 
 app.use(express.static('dist'));
 
-// app.use('/add', searchRouter);
-app.post('/add', (req, res) => {
-	console.log(req.body)
-	const insert_query = `INSERT INTO searches ( tag, location, expiration) VALUES(tag = ?, location = ?, expiration = ?)`
-	db.query('SELECT * FROM searches WHERE tag = ? OR location = ?',
-	[req.body.searchTerm, req.body.location], (err, results) => {
-		if(err){
-			console.log(err);
-			res.send({status: 500, results: []});
-		}
-		if(results.length > 0){
-			console.log('SEARCH SUCCESSFUL')
-			res.send({status: 200, results: results});
-		} else {
-			//req.body.userId
-			db.query(insert_query, [req.body.searchTerm, req.body.location, req.body.date, ], (err, results) => {
-				if(err){
-					res.send(err);
-				}
-				else(res.send({status: 200, results: 'entry added'}))
-				console.log('INPUT SUCCESSFUL')
-			})
-		}
-	});
-})
+app.use('/add', searchRouter);
 
 module.exports = app;
