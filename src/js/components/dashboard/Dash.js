@@ -4,7 +4,9 @@ class Dash extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			
+			city: '',
+			tag: '',
+			date: ''
 		}
 	}
 
@@ -13,6 +15,24 @@ class Dash extends Component{
 		this.setState({
 			type: text
 		})
+	}
+
+	submit(){
+		const data = { 
+			location: this.state.city,
+			searchTerm: this.state.tag,
+			date };
+			
+		fetch('/add', {
+			method: 'POST',
+			cache: 'no-cache',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+		.then(res => res.json())
+		.then(console.log(res));
 	}
 
 	render(){
@@ -30,6 +50,7 @@ class Dash extends Component{
 					Until:
 					<input type='date' onInput={(e) => this.updateText('date', e.target.value)} />
 				</div>
+				<button type='submit' onClick={() => this.submit()}>Submit</button>
 			</div>
 		)
 	}
