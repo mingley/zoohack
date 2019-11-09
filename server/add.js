@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('./database.js');
 
 router.post('/', (req, res) => {
-	const insert_query = `INSERT INTO searches ( tag, location, date) VALUES(?, ?, ?)`
+	const insert_query = `INSERT INTO searches ( tag, location, expiration) VALUES(tag = ?, location = ?, expiration = ?)`
 	db.query('SELECT * FROM searches WHERE tag = ? OR location = ?',
 	[req.body.searchTerm, req.body.searchTerm], (err, results) => {
 		if(err){
