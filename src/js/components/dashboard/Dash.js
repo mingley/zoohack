@@ -15,6 +15,9 @@ class Dash extends Component{
     addTarget(){
         const input_target = this.state.input_target
         fetch('/add', {  
+            headers: {
+                'Content-Type': 'application/json'
+            },
             method: 'POST',   
             body: JSON.stringify(input_target)
         })
