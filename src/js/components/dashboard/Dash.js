@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Dash extends Component{
     constructor(props) {
         super(props);
+        this.addTarget = this.addTarget.bind(this);
         this.state = {
             input_target:{
                 tag: 'none',
