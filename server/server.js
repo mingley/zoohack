@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors');
 
 const searchRouter = require('./add.js');
+console.log(searchRouter);
 
 const app = express();
 
