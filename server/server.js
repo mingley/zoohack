@@ -2,12 +2,14 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const mysql = require('mysql');
+
+
 require('dotenv').config()
 
 const app = express();
 
 app.use(cors());
-
+app.get('/api');
 app.use(express.static('dist'));
 
 const DECONFLICTION_QUERY = 'SELECT * FROM targets';
@@ -28,17 +30,6 @@ const connection = mysql.createConnection({
 
 app.get('/search', (req, res) => {
     res.send('backend is working')
-    //DB SAMPLE QUERY
-    // connection.query(DECONFLICTION_QUERY, (err, results) => {
-    //     if(err){
-    //         return res.send(err)
-    //     }
-    //     else{
-    //         return res.json({
-    //             data: results
-    //         })
-    //     }
-    // })
 });
 
 app.get('/update', (req, res) => {
@@ -55,5 +46,6 @@ app.get('/update', (req, res) => {
     console.log(name, price);
     res.send('entry added'); 
 })
+  
 
 module.exports = app;
