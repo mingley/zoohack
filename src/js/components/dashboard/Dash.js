@@ -13,7 +13,7 @@ class Dash extends Component{
       }
 
     addTarget(){
-        console.log(input_target)
+        console.log(this.state.input_target)
         const input_target = this.state.input_target
         fetch('/add', {  
             method: 'POST',   
