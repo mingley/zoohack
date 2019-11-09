@@ -21,7 +21,7 @@ class Dash extends Component{
 		const data = { 
 			location: this.state.city,
 			searchTerm: this.state.tag,
-			date: new Date(this.state.date)
+			date: Date.parse(this.state.date)
 		};
 		console.log(data);
 		fetch('/add', {
