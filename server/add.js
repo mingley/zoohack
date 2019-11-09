@@ -9,6 +9,7 @@ router.post('/', (req, res) => {
 			console.log(err);
 			res.send({status: 500, results: []});
 		}
+		console.log(results)
 		if(results.length > 0){
 			res.send({status: 200, results: results});
 		} else {
