@@ -3,18 +3,23 @@ const router = express.Router();
 const db = require('./database.js');
 
 router.post('/', (req, res) => {
+	const insert_query = `INSERT INTO targets ( tag, location, date) VALUES(?, ?, ?)`
 	db.query('SELECT * FROM searches WHERE tag = ? OR location = ?',
 	[req.body.searchTerm, req.body.searchTerm], (err, results) => {
 		if(err){
 			console.log(err);
 			res.send({status: 500, results: []});
 		}
-		console.log(results)
 		if(results.length > 0){
 			res.send({status: 200, results: results});
 		} else {
-			//add new search, need user info first
-			res.send({status: 200});
+			//req.body.userId
+			db.query(insert_query, [req.body.searchTerm, req.body.location, req.body.date, ], (err, results) => {
+				if(err){
+					res.send(err);
+				}
+				else(res.send({status: 200, results: 'entry added'}))
+			})
 		}
 	});
 })
