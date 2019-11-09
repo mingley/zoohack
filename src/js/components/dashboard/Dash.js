@@ -32,7 +32,7 @@ class Dash extends Component{
 			body: JSON.stringify(data)
 		})
 		.then(res => res.json())
-		.then(console.log(res));
+		.then(res => console.log(res));
 	}
 
 	render(){
