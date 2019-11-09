@@ -1,12 +1,59 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
+const mysql = require('mysql');
+require('dotenv').config()
 
 const app = express();
 
+app.use(cors());
+
 app.use(express.static('dist'));
 
-app.get('/api', (req, res) => {
+const DECONFLICTION_QUERY = 'SELECT * FROM targets';
+
+const connection = mysql.createConnection({
+    host: 'hostaddressherejosh',
+    user: 'username',
+    password: 'password?',
+    database: 'hackathonDBname'
+})
+
+// connection.connect(err => {
+//     if(err){
+//         console.log(err);
+//         return err;
+//     }
+// });
+
+app.get('/search', (req, res) => {
     res.send('backend is working')
+    //DB SAMPLE QUERY
+    // connection.query(DECONFLICTION_QUERY, (err, results) => {
+    //     if(err){
+    //         return res.send(err)
+    //     }
+    //     else{
+    //         return res.json({
+    //             data: results
+    //         })
+    //     }
+    // })
 });
+
+app.get('/update', (req, res) => {
+    const { targetName, isFlagged} = req.query;
+    const INSERT_FLAGGED_QUERY = `INSERT INTO targets ( targetName, isFlagged) VALUES('${targetName}', ${isFlagged})` //targetname has '' for string type and isflagged does not for boolean type
+    connection.query(INSERT_FLAGGED_QUERY, (err, results) => {
+        if(err){
+            return res.send(err);
+        }
+        else{
+            return res.send('success')
+        }
+    })
+    console.log(name, price);
+    res.send('entry added'); 
+})
 
 module.exports = app;
