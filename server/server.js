@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors');
 
 const db = require('./database.js');
+const searchRouter = require('./add.js');
 
 const app = express();
 
@@ -12,16 +13,6 @@ app.use(bodyParser.json())
 
 app.use(express.static('dist'));
 
-app.post('/search', (req, res) => {
-		db.query('SELECT * FROM searches WHERE tag = ? OR location = ?',
-		[req.body.searchTerm, req.body.searchTerm], (err, results) => {
-			if(err){
-				console.log(err);
-				res.send([]);
-			}
-			console.log(results);
-			res.send(results);
-		});
-});
+app.use('/add', searchRouter);
 
 module.exports = app;
