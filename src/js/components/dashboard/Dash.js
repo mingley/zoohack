@@ -21,8 +21,8 @@ class Dash extends Component{
 		const data = { 
 			location: this.state.city,
 			searchTerm: this.state.tag,
-			date };
-			
+			date: this.state.date };
+
 		fetch('/add', {
 			method: 'POST',
 			cache: 'no-cache',
