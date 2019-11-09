@@ -13,11 +13,10 @@ class Dash extends Component{
       }
 
     addTarget(){
-        console.log(this.state.input_target)
         const input_target = this.state.input_target
         fetch('/add', {  
             method: 'POST',   
-            body: input_target
+            body: JSON.stringify(input_target)
         })
         .then(function (data) {  
         console.log('Request success: ', data);  
