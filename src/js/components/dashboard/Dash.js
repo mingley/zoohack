@@ -14,7 +14,7 @@ class Dash extends Component{
 
     addTarget(){
         const input_target = this.state.input_target
-        fetch('http://138.68.208.80/add', {  
+        fetch('http://138.68.208.80:3002/add', {  
             method: 'POST',   
             body: JSON.stringify({
             input_target
