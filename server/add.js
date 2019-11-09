@@ -11,6 +11,7 @@ router.post('/', (req, res) => {
 			res.send({status: 500, results: []});
 		}
 		if(results.length > 0){
+			console.log('SEARCH SUCCESSFUL')
 			res.send({status: 200, results: results});
 		} else {
 			//req.body.userId
@@ -19,6 +20,7 @@ router.post('/', (req, res) => {
 					res.send(err);
 				}
 				else(res.send({status: 200, results: 'entry added'}))
+				console.log('INPUT SUCCESSFUL')
 			})
 		}
 	});
