@@ -1,5 +1,5 @@
 import React from 'react';
-import { Login } from './components/login/Login'
+import Login from './components/login/Login'
 import Dash from './components/dashboard/Dash'
 
 class App extends React.Component {
