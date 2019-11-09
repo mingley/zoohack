@@ -35,11 +35,11 @@ class Dash extends Component{
             <div>
                 <p>-----these are for testing inputting data into the db---</p>
                 <input 
-                value={input_target.name}
-                onChange={e => this.setState({ input_target: {... input_target, name: e.target.value}})} />
+                value={input_target.tag}
+                onChange={e => this.setState({ input_target: {... input_target, tag: e.target.value}})} />
                 <input 
-                value={input_target.isFlagged}
-                onChange={e => this.setState({ input_target: {... input_target, isFlagged: e.target.value}})}  />
+                value={input_target.location}
+                onChange={e => this.setState({ input_target: {... input_target, location: e.target.value}})}  />
                 <button onClick={this.addTarget}>Add Target</button>
             </div>
         </div>
