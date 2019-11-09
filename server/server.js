@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const cors = require('cors');
 
-const db = require('./database.js');
 const searchRouter = require('./add.js');
 
 const app = express();

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const db = require('./database.js');
 
 router.post('./add', (req, res) => {
 	db.query('SELECT * FROM searches WHERE tag = ? OR location = ?',
