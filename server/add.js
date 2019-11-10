@@ -15,7 +15,15 @@ router.post('/', (req, res) => {
 				res.send({ status: 500, results: [] });
 			}
 			if (results.length > 0) {
-				res.send({ status: 200, results: results });
+				let parsedResults = results.map(result => {
+					let newResult = {
+						email: result.email,
+						fullName: result.fullName,
+					}
+					return newResult;
+				});
+				res.send({ status: 200, results: parsedResults });
+
 			}
 			else {
 				res.send({ status: 200 })
@@ -24,12 +32,7 @@ router.post('/', (req, res) => {
 				if (err) {
 					console.error(err);
 				}
-				else {
-					console.log('INPUT SUCCESSFUL')
-				}
-			}
-			);
-
+			});
 		})
 })
 
