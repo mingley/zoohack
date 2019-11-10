@@ -9,14 +9,8 @@ const pool  = mysql.createPool({
 
 const cleanse_query = `DELETE FROM searches WHERE expiration < ?`
 
-setInterval(
-cleanse
-, 1000 * 60 * 60);
-
 function cleanse(){
-	console.log('working');
-	console.log(Date.now())
-	pool.query(cleanse_query,[Date.now()], (err, results) => {
+	pool.query(cleanse_query,[Date.now()/1000], (err, results) => {
 	if (err) {
 		console.error(err);
 	}
@@ -26,6 +20,10 @@ function cleanse(){
 }
 );
 }
+
+setInterval(
+cleanse
+, 1000 * 60 * 60);
 
 setTimeout(cleanse, 9000);
 module.exports = pool;
