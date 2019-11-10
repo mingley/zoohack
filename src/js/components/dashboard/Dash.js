@@ -51,23 +51,23 @@ class Dash extends Component{
 			<div className='dashboardContainer'>
 				<div className='dashboardRow'>
 					{text.location}: 
-					<input type='text' onInput={(e) => this.updateText('city', e.target.value)} />
+					<input type='text' class='textInput' onInput={(e) => this.updateText('city', e.target.value)} />
 				</div>
 				<div className='dashboardRow'>
 					{text.searchTerm}: 
-					<input type='text' onInput={(e) => this.updateText('tag', e.target.value)} />
+					<input type='text' class='textInput' onInput={(e) => this.updateText('tag', e.target.value)} />
 				</div>
 				<div className='dashboardRow'>
 					{text.expiration}:
-					<input type='date' onInput={(e) => this.updateText('date', e.target.value)} />
+					<input type='date' class='textInput' onInput={(e) => this.updateText('date', e.target.value)} />
 				</div>
-				<button type='submit' onClick={() => this.submit()}>{text.submit}</button>
+				<button type='submit' class='button' onClick={() => this.submit()}>{text.submit}</button>
 				
 				<div className='resultsContainer'>
 					{
 						this.state.results.map(result => {
 							return(
-								<div>
+								<div className='searchTermResultRow'>
 									{text.notification.replace('{name}', result.fullName).replace('{email}', result.email)}
 								</div>
 							)

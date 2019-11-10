@@ -51,10 +51,10 @@ export default class Admin extends React.Component{
 		return (
 			<div className='adminContainer'>
 				<h2>Add Account</h2>
-				<input id='newUserName' placeholder='Full Name' />
-				<input id='newUserEmail' placeholder='Email Address' />
-				<input id='newUserPassword' placeholder='Password' />
-				<div id='submitNewUser' onClick={this.handleSubmit}>Submit</div>
+				<input className='textInput' id='newUserName' placeholder='Full Name' />
+				<input className='textInput' id='newUserEmail' placeholder='Email Address' />
+				<input className='textInput' id='newUserPassword' placeholder='Password' />
+				<div className='button' id='submitNewUser' onClick={this.handleSubmit}>Submit</div>
 				<div>{this.state.submitStatusMessage}</div>
 			</div>
 		)
