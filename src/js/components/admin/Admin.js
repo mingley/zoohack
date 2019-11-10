@@ -6,6 +6,7 @@ export default class Admin extends React.Component{
 		this.state = {
 			submitStatusMessage: ''
 		}
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleSubmit() {
@@ -31,7 +32,7 @@ export default class Admin extends React.Component{
 			}
 		})
 		.then(res => {
-			if(res.status === "success"){
+			if(res.status === 200){
 				this.setState({
 					submitStatusMessage: 'Success!'
 				})
