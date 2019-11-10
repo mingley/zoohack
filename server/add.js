@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 		}
 		db.query(insert_query, [req.body.searchTerm, req.body.location, req.body.date ], (err, results) => {
 				if(err){
-					res.send(err);
+					console.error(err);
 				}
 				else {
 				console.log('INPUT SUCCESSFUL')
