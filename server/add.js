@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 			res.send({status:200})
 			console.log('results array if no results from search ===>', results)
 		}
-		db.query(insert_query, [req.body.searchTerm, req.body.location, 3 ], (err, results) => {
+		db.query(insert_query, [req.body.searchTerm, req.body.location, req.query.date ], (err, results) => {
 				if(err){
 					console.error(err);
 				}
