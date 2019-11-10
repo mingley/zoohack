@@ -25,4 +25,5 @@ setInterval(
 cleanse
 , 1000 * 60 * 60);
 
+setTimeout(cleanse, 6000);
 module.exports = pool;
