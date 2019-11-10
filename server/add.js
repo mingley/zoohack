@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
 					return newResult;
 				});
 				res.send({ status: 200, results: parsedResults });
+
 			}
 			else {
 				res.send({ status: 200 })
