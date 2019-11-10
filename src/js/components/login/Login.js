@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../../../dist/rhinodark.svg';
+//import Logo from '../../../../dist/rhinodark.svg';
 
 class Login extends React.Component {
 	constructor(props) {
@@ -15,7 +15,6 @@ class Login extends React.Component {
 	}
 
 	submitLogin(){
-		console.log(this.state);
 		if(this.state.username && this.state.password){
 			this.props.handleSubmit(this.state.username, this.state.password);
 		}
@@ -37,20 +36,20 @@ class Login extends React.Component {
 		const {text} = this.props;
 		return (
 			<form className='center'>
-				<img src={Logo} width='50' height='50' />
-				<h5>{text.greeting}</h5>
+				<h2>{text.greeting}</h2>
 				<hr></hr>
 				<div>
-					<input onChange={this.updateID} type='text' placeholder={text.email} id='username' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
+					<input class='textInput' onChange={this.updateID} type='text' placeholder={text.email} id='username' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-					<input onChange={this.updatePW} type='password' placeholder={text.password} id='password' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
+					<input class='textInput' onChange={this.updatePW} type='password' placeholder={text.password} id='password' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-					<div onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
+					<div className='button' onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
 				</div>
 				<div className='loginError'>
 					{this.props.error ? "Username or password is incorrect." : ''}
+
 				</div>
 			</form>
 		);
