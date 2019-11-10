@@ -92,9 +92,10 @@ const chinese = {
 
 
 export default {
+	中文 : chinese,
 	English: english,
-	Spanish: spanish,
-	Zulu: zulu,
-	Portugese: portugese,
-	Chinese: chinese
+	Español: spanish,
+	IsiZulu: zulu,
+	Português: portugese,
+	
 }
