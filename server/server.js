@@ -7,6 +7,7 @@ const passport = require('passport');
 const localStrategy = require('passport-local');
 
 const searchRouter = require('./add.js');
+const adminRouter = require('./admin.js');
 const app = express();
 const db = require('./database.js');
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -20,9 +21,10 @@ app.use(passport.session());
 app.use(express.static('dist'));
 
 app.use('/add', searchRouter);
+app.use('/create', adminRouter);
 
 app.post('/login', passport.authenticate('local'), (req, res) => {
-	res.send({status: 'success'});
+	res.send({status: 'success', isAdmin: req.user.isAdmin});
 })
 
 passport.use(new localStrategy(
@@ -37,6 +39,8 @@ passport.use(new localStrategy(
 				console.log(err);
 				return done(err);
 			} else {
+				//hashing should never provide an empty string, so this is our comparison
+				//if the user account doesn't exist.
 				let user = {password: ''};
 				if(results.length === 1){
 					user = results[0];
