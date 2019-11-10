@@ -36,7 +36,10 @@ class Dash extends Component{
 		.then(res => res.json())
 		.then(res => {
 			this.setState({
-				results: res.results || []
+				results: res.results || [],
+				city: '',
+				date: '',
+				tag: ''
 			})
 		});
 		function parseDate(text){
@@ -51,15 +54,15 @@ class Dash extends Component{
 			<div className='dashboardContainer'>
 				<div className='dashboardRow'>
 					{text.location}: 
-					<input type='text' class='textInput' onInput={(e) => this.updateText('city', e.target.value)} />
+					<input type='text' class='textInput' onInput={(e) => this.updateText('city', e.target.value)} value={this.state.city} />
 				</div>
 				<div className='dashboardRow'>
 					{text.searchTerm}: 
-					<input type='text' class='textInput' onInput={(e) => this.updateText('tag', e.target.value)} />
+					<input type='text' class='textInput' onInput={(e) => this.updateText('tag', e.target.value)} value={this.state.tag} />
 				</div>
 				<div className='dashboardRow'>
 					{text.expiration}:
-					<input type='date' class='textInput' onInput={(e) => this.updateText('date', e.target.value)} />
+					<input type='date' class='textInput' onInput={(e) => this.updateText('date', e.target.value)} value={this.state.date} />
 				</div>
 				<button type='submit' class='button' onClick={() => this.submit()}>{text.submit}</button>
 				
