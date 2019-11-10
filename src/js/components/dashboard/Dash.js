@@ -6,7 +6,8 @@ class Dash extends Component{
 		this.state = {
 			city: '',
 			tag: '',
-			date: ''
+			date: '',
+			results: []
 		}
 		this.updateText = this.updateText.bind(this);
 		this.submit = this.submit.bind(this);
@@ -24,7 +25,6 @@ class Dash extends Component{
 			searchTerm: this.state.tag,
 			date: parseDate(this.state.date).getTime()
 		};
-		console.log(data);
 		fetch('/add', {
 			method: 'POST',
 			cache: 'no-cache',
@@ -34,30 +34,46 @@ class Dash extends Component{
 			body: JSON.stringify(data)
 		})
 		.then(res => res.json())
-		.then(res => console.log(res));
-
+		.then(res => {
+			this.setState({
+				results: res.results
+			})
+		});
 		function parseDate(text){
-			let [month, day, year] = text.split('-');
-			return new Date(year, month, day);
+			let [year, month, day] = text.split('-');
+			return new Date(year, month-1, day);
 		}
 	}
 
 	render(){
+		const { text } = this.props;
 		return (
 			<div className='dashboardContainer'>
 				<div className='dashboardRow'>
-					Working in city/area: 
+					{text.location}: 
 					<input type='text' onInput={(e) => this.updateText('city', e.target.value)} />
 				</div>
 				<div className='dashboardRow'>
-					Working on: 
+					{text.searchTerm}: 
 					<input type='text' onInput={(e) => this.updateText('tag', e.target.value)} />
 				</div>
 				<div className='dashboardRow'>
-					Until:
+					{text.expiration}:
 					<input type='date' onInput={(e) => this.updateText('date', e.target.value)} />
 				</div>
-				<button type='submit' onClick={() => this.submit()}>Submit</button>
+				<button type='submit' onClick={() => this.submit()}>{text.submit}</button>
+				
+				<div className='resultsContainer'>
+					{
+						this.state.results.map(result => {
+							return(
+								<div>
+									{text.notification.replace('{name}', result.fullName).replace('{email}', result.email)}
+								</div>
+							)
+						})
+					}
+				</div>
 			</div>
 		)
 	}

@@ -25,18 +25,19 @@ class Login extends React.Component {
 	}
 
 	render() {
+		const {text} = this.props;
 		return (
-			<form className='center' onSubmit={this.props.handleSubmit}>
-				<h5>Welcome</h5>
+			<form className='center'>
+				<h5>{text.greeting}</h5>
 				<hr></hr>
 				<div>
-					<input onChange={this.updateID} type='text' placeholder='id' id='username' />
+					<input onChange={this.updateID} type='text' placeholder={text.email} id='username' />
 				</div>
 				<div>
-					<input onChange={this.updatePW} type='password' placeholder='password' id='password' />
+					<input onChange={this.updatePW} type='password' placeholder={text.password} id='password' />
 				</div>
 				<div>
-					<button onClick={() => this.props.handleSubmit(this.state.username, this.state.password)} type='submit' disabled={!this.validateForm()}>Login</button>
+					<div onClick={() => this.props.handleSubmit(this.state.username, this.state.password)} type='submit' disabled={!this.validateForm()}>{text.login}</div>
 				</div>
 			</form>
 		);
