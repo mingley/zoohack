@@ -1,5 +1,4 @@
 import React from 'react';
-
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
@@ -44,11 +43,10 @@ class Login extends React.Component {
 					<input class='textInput' onChange={this.updatePW} type='password' placeholder={text.password} id='password' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-					<div className='button' onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
+					<div onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
 				</div>
 				<div className='loginError'>
 					{this.props.error ? "Username or password is incorrect." : ''}
-
 				</div>
 			</form>
 		);
