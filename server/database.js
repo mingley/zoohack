@@ -7,7 +7,7 @@ const pool  = mysql.createPool({
     database : 'wildflag'
 })
 
-const cleanse_query = `DELETE FROM searches WHERE expiration < UNIX_TIMESTAMP(NOW()) ?`
+const cleanse_query = `DELETE FROM searches WHERE expiration < (UNIX_TIMESTAMP(NOW())) ?`
 
 function cleanse(){
 	pool.query(cleanse_query,[Math.floor(Date.now()/1000)], (err, results) => {
