@@ -29,7 +29,7 @@ function cleanse(){
 		console.error(err);
 	}
 	else {
-		console.log('expired entries removed')
+		console.log(results)
 	}
 }
 );
