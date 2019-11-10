@@ -3,8 +3,8 @@ const pool  = mysql.createPool({
 	connectionLimit: 5,
 	host: process.env.DATABASE_IP_ADDRESS,
 	user     : process.env.DATABASE_USERNAME,
-  password : process.env.DATABASE_PASSWORD,
-  database : 'wildflag'
+    password : process.env.DATABASE_PASSWORD,
+    database : 'wildflag'
 })
 
 const cleanse_query = `DELETE FROM searches WHERE expiration < (UNIX_TIMESTAMP());`
@@ -35,5 +35,5 @@ function cleanse(){
 );
 }
 
-cleanse();
+setTimeout(cleanse, 1000);
 module.exports = pool;
