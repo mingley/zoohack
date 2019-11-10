@@ -7,10 +7,9 @@ const pool  = mysql.createPool({
     database : 'wildflag'
 })
 
-const cleanse_query = `DELETE FROM searches WHERE expiration < ?`
+const cleanse_query = `DELETE FROM searches WHERE expiration < UNIX_TIMESTAMP(NOW()) ?`
 
 function cleanse(){
-	console.log('cleanse time', Math.floor(Date.now()/1000))
 	pool.query(cleanse_query,[Math.floor(Date.now()/1000)], (err, results) => {
 	if (err) {
 		console.error(err);
@@ -26,5 +25,5 @@ setInterval(
 cleanse
 , 1000 * 60 * 60);
 
-setTimeout(cleanse, 3000);
+setTimeout(cleanse, 4000);
 module.exports = pool;
