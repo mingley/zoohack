@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-//import Logo from '../../../../dist/rhinodark.svg';
-=======
-import Logo from '../../../../img/rhinodark.svg';
->>>>>>> 93055789690876715cd075ec9dc709a0582e48a4
+
 
 class Login extends React.Component {
 	constructor(props) {
@@ -49,18 +45,10 @@ class Login extends React.Component {
 					<input class='textInput' onChange={this.updatePW} type='password' placeholder={text.password} id='password' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-<<<<<<< HEAD
 					<div onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
 				</div>
 				<div className='loginError'>
 					{this.props.error ? "Username or password is incorrect." : ''}
-=======
-					<div className='button' onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
-				</div>
-				<div className='loginError'>
-					{this.props.error ? "Username or password is incorrect." : ''}
-
->>>>>>> 93055789690876715cd075ec9dc709a0582e48a4
 				</div>
 			</form>
 		);

@@ -42,10 +42,6 @@ class App extends React.Component {
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
     })
-<<<<<<< HEAD
-=======
-
->>>>>>> 93055789690876715cd075ec9dc709a0582e48a4
 			.then(res => {
 				if(res.ok){
 					return res.json()
@@ -66,10 +62,6 @@ class App extends React.Component {
 				}
 			})
       .catch(error => this.setState({loginErrorMessage: error}))
-<<<<<<< HEAD
-=======
-
->>>>>>> 93055789690876715cd075ec9dc709a0582e48a4
   }
 
   render() {
