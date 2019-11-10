@@ -5,7 +5,9 @@ const db = require('./database.js');
 router.post('/', (req, res) => {
 
 	const insert_query = `INSERT INTO searches ( tag, location, expiration) VALUES(?, ?, ?)`
-	db.query('SELECT * FROM searches WHERE tag = ? OR location = ?',
+	db.query(`SELECT * FROM searches 
+		INNER JOIN searches.userID ON logins.id
+		WHERE tag = ? OR location = ?`,
 		[req.body.searchTerm, req.body.location],
 		(err, results) => {
 			if (err) {
