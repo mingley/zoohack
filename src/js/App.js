@@ -16,16 +16,18 @@ class App extends React.Component {
 			loginErrorMessage: ''
     }
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleLanguageChange = this.handleLanguageChange.bind(this);
 		this.toggleAdminSettings = this.toggleAdminSettings.bind(this);
 	}
 
-	toggleAdminSettings(){
+	toggleAdminSettings(status){
 		this.setState({
-			showAdminPanel: !this.setState.showAdminPanel
+			showAdminPanel: status
 		})
 	}
 	
 	handleLanguageChange(newLanguage){
+		console.log(this.state);
 		this.setState({
 			currentLanguageName: newLanguage,
 			text: languages[newLanguage].index
@@ -40,6 +42,10 @@ class App extends React.Component {
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
     })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 93055789690876715cd075ec9dc709a0582e48a4
 			.then(res => {
 				if(res.ok){
 					return res.json()
@@ -60,6 +66,10 @@ class App extends React.Component {
 				}
 			})
       .catch(error => this.setState({loginErrorMessage: error}))
+<<<<<<< HEAD
+=======
+
+>>>>>>> 93055789690876715cd075ec9dc709a0582e48a4
   }
 
   render() {
@@ -68,11 +78,11 @@ class App extends React.Component {
 		if(this.state.isAdmin){
 			if(this.state.showAdminPanel){
 				adminLink = (
-					<div className='adminLink' onClick={this.toggleAdminSettings}>Hide Admin Settings</div>
+					<div className='adminLink' onClick={() => this.toggleAdminSettings(false)}>Hide Admin Settings</div>
 				)
 			} else {
 				adminLink = (
-					<div className='adminLink' onClick={this.toggleAdminSettings}>Show Admin Settings</div>
+					<div className='adminLink' onClick={() => this.toggleAdminSettings(true)}>Show Admin Settings</div>
 				)
 			}
 		}
