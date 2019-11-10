@@ -35,5 +35,5 @@ function cleanse(){
 );
 }
 
-setTimeout(cleanse, 1000);
+setTimeout(cleanse, 9000);
 module.exports = pool;
