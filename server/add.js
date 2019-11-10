@@ -29,10 +29,10 @@ router.post('/', (req, res) => {
 		if(err){
 			res.send(err);
 		}
-		else(res.send({status: 200, results: results}))
+		else{(res.send({status: 200, results: results}))
 		console.log('INPUT SUCCESSFUL')
-
-
+	}
+})
 })
 
 module.exports = router;
