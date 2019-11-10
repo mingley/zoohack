@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../../../dist/rhinodark.svg';
+//import Logo from '../../../../dist/rhinodark.svg';
 
 class Login extends React.Component {
 	constructor(props) {
