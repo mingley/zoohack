@@ -3,6 +3,11 @@ const router = express.Router();
 const db = require('./database.js');
 
 router.post('/', (req, res) => {
+	if(!req.user){
+		res.status(404).end();
+		return;
+	}
+	console.log(req.user);
 	const insert_query = `INSERT INTO searches (userID, tag, location, expiration) VALUES(?, ?, ?, ?)`
 
 	db.query(`SELECT * FROM searches 
