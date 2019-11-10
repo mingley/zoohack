@@ -8,14 +8,15 @@ const db = require('./database.js');
 router.post('/', (req, res) => {
 	console.log(req.body)
 	const insert_query = `INSERT INTO searches ( tag, location, expiration) VALUES(tag = ?, location = ?, expiration = ?)`
-	db.query('SELECT * FROM searches WHERE tag = ? OR location = ?',
+
+	db.query('SELECT * FROM searches WHERE tag IS NULL OR location IS NULL',
 	[req.body.searchTerm, req.body.location],
 	 (err, results) => {
 		if(err){
 			console.log(err);
 			res.send({status: 500, results: []});
 		}
-		if(results){
+		if(results.length > 0){
 			console.log('SEARCH SUCCESSFUL')
 			console.log(results)
 			res.send({status: 200, results: results});
