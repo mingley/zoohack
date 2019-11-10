@@ -6,7 +6,8 @@ class Dash extends Component{
 		this.state = {
 			city: '',
 			tag: '',
-			date: ''
+			date: '',
+			results: []
 		}
 		this.updateText = this.updateText.bind(this);
 		this.submit = this.submit.bind(this);
@@ -34,7 +35,12 @@ class Dash extends Component{
 			body: JSON.stringify(data)
 		})
 		.then(res => res.json())
-		.then(res => console.log(res));
+		.then(res => {
+			console.log(res)
+			this.setState({
+				results: res.results
+			})
+		});
 
 		function parseDate(text){
 			let [month, day, year] = text.split('-');
@@ -58,6 +64,18 @@ class Dash extends Component{
 					<input type='date' onInput={(e) => this.updateText('date', e.target.value)} />
 				</div>
 				<button type='submit' onClick={() => this.submit()}>Submit</button>
+				
+				<div className='resultsContainer'>
+					{
+						this.state.results.map(result => {
+							return(
+								<div>
+									Notice: Matching operation found, please contact {result.fullName} at {result.email} for more information.
+								</div>
+							)
+						})
+					}
+				</div>
 			</div>
 		)
 	}
