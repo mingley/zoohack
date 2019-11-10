@@ -8,12 +8,13 @@ class Dash extends Component{
 			tag: '',
 			date: ''
 		}
+		this.updateText = this.updateText.bind(this);
+		this.submit = this.submit.bind(this);
 	}
 
 	updateText(type, text){
-		console.log(text);
 		this.setState({
-			type: text
+			[type]: text
 		})
 	}
 
@@ -21,7 +22,7 @@ class Dash extends Component{
 		const data = { 
 			location: this.state.city,
 			searchTerm: this.state.tag,
-			date: Date.parse(this.state.date)
+			date: parseDate(this.state.date).getTime()
 		};
 		console.log(data);
 		fetch('/add', {
@@ -34,6 +35,11 @@ class Dash extends Component{
 		})
 		.then(res => res.json())
 		.then(res => console.log(res));
+
+		function parseDate(text){
+			let [month, day, year] = text.split('-');
+			return new Date(year, month, day);
+		}
 	}
 
 	render(){
