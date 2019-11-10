@@ -30,14 +30,18 @@ class App extends React.Component {
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
     })
-			.then(res => res.json())
-			.then(res => {
-				if(res.status === "success"){
-					this.setState({
-						loggedIn: true
-					})
-				}
-			})
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === "success") {
+          this.setState({
+            loggedIn: true
+          })
+        } else {
+          this.setState({
+            failed: true
+          })
+        }
+      })
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response));
   }

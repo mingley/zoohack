@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../../../../dist/rhinodark.svg';
 
 class Login extends React.Component {
 	constructor(props) {
@@ -28,6 +29,7 @@ class Login extends React.Component {
 		const {text} = this.props;
 		return (
 			<form className='center'>
+				<img src={Logo} width='50' height='50' />
 				<h5>{text.greeting}</h5>
 				<hr></hr>
 				<div>
@@ -37,7 +39,7 @@ class Login extends React.Component {
 					<input onChange={this.updatePW} type='password' placeholder={text.password} id='password' />
 				</div>
 				<div>
-					<div onClick={() => this.props.handleSubmit(this.state.username, this.state.password)} type='submit' disabled={!this.validateForm()}>{text.login}</div>
+					<div onClick={() => this.props.handleSubmit(this.state.username, this.state.password)} type='submit' disabled={!this.validateForm()} className='div-hover'>{text.login}</div>
 				</div>
 			</form>
 		);
