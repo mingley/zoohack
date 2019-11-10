@@ -39,7 +39,6 @@ class Dash extends Component{
 				results: res.results
 			})
 		});
-
 		function parseDate(text){
 			let [year, month, day] = text.split('-');
 			return new Date(year, month-1, day);
