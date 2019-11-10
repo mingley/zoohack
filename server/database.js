@@ -15,6 +15,7 @@ cleanse
 
 function cleanse(){
 	console.log('working');
+	console.log(Date.now())
 	pool.query(cleanse_query,[Date.now()], (err, results) => {
 	if (err) {
 		console.error(err);
