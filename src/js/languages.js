@@ -110,6 +110,26 @@ const korean = {
 	}
 }
 
+const finnish = {
+	index: {
+		language: "Suomi"
+	},
+	login: {
+		greeting: "Tervetuloa!",
+		email: "Sähköposti",
+		password: "Salasana",
+		login: "Käyttäjätunnus"
+	},
+	dashboard: {
+		location: "Sijainti missä olet",
+		searchTerm: "Kuvaus",
+		expiration: "Päättyy kello",
+		submit: "Lähetä",
+		notification: "Huomaa: Löydetty vastaava toimenpide, ota yhteyttä {name} luona {email} lisätietoja."
+	}
+}
+
+
 export default {
 	中文 : chinese,
 	English: english,
@@ -117,4 +137,5 @@ export default {
 	IsiZulu: zulu,
 	Português: portugese,
 	한국어: korean
+	Suomi: finnish,
 }

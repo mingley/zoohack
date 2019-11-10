@@ -10,7 +10,7 @@ hr {
 	margin-top: 1rem;
   margin-bottom: 2rem;
   border-width: 0;
-	border-top: 1px solid #E1E1E1; 
+	border-top: 1px solid #222831; 
 }
 
 .mainContainer{
@@ -51,6 +51,14 @@ hr {
   border: 1px solid #bbb;
   cursor: pointer;
 	box-sizing: border-box; 
+}
+
+.logoutButton{
+	margin: 0px 5px 0px 0px;
+	padding: 0px 2px;
+	height: 20px;
+	line-height: 20px;
+	letter-spacing: normal;
 }
 
 .button:focus {
