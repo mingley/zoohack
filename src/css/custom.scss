@@ -23,6 +23,7 @@
 
 html {
   font-size: 62.5%; }
+
 body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
@@ -64,6 +65,7 @@ button {
   box-sizing: border-box; }
 button:hover,
 input[type="submit"]:hover,
+.hover,
 button:focus,
 input[type="submit"]:focus {
   color: #333;
@@ -92,3 +94,7 @@ hr {
   margin-bottom: 2rem;
   border-width: 0;
   border-top: 1px solid #E1E1E1; }
+
+.div-hover:hover {
+  cursor: pointer
+}
