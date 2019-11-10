@@ -9,8 +9,8 @@ router.post('/', (req, res) => {
 	console.log(req.body)
 	const insert_query = `INSERT INTO searches ( tag, location, expiration) VALUES(tag = ?, location = ?, expiration = ?)`
 	
-	db.query('SELECT * FROM searches WHERE (tag = ? OR location = ?)',
-	[req.body.searchTerm, req.body.location],
+	db.query('SELECT * FROM searches',
+	// [req.body.searchTerm, req.body.location],
 	 (err, results) => {
 		if(err){
 			console.log(err);
