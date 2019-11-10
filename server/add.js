@@ -22,14 +22,14 @@ router.post('/', (req, res) => {
 			res.send({status: 200, results: results});
 		} 
 		else {
-			console.log('this is not good ===>', results)
+			res.send({status:200})
+			console.log('results array if no results from search ===>', results)
 		}
 		db.query(insert_query, [req.body.searchTerm, req.body.location, req.body.date ], (err, results) => {
 				if(err){
 					res.send(err);
 				}
 				else {
-				(res.send({status: 200, results: results}))
 				console.log('INPUT SUCCESSFUL')
 				}
 		}
