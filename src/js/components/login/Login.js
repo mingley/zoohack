@@ -37,13 +37,13 @@ class Login extends React.Component {
 				<h2>{text.greeting}</h2>
 				<hr></hr>
 				<div>
-					<input class='textInput' onChange={this.updateID} type='text' placeholder={text.email} id='username' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
+					<input className='textInput' onChange={this.updateID} type='text' placeholder={text.email} id='username' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-					<input class='textInput' onChange={this.updatePW} type='password' placeholder={text.password} id='password' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
+					<input className='textInput' onChange={this.updatePW} type='password' placeholder={text.password} id='password' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-					<div onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
+					<div className='button' onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
 				</div>
 				<div className='loginError'>
 					{this.props.error ? "Username or password is incorrect." : ''}
