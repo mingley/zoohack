@@ -11,7 +11,7 @@ const cleanse_query = `DELETE FROM searches WHERE expiration < (UNIX_TIMESTAMP()
 
 setInterval(
 	function(){
-		db.query(cleanse_query, (err, results) => {
+		pool.query(cleanse_query, (err, results) => {
 		if (err) {
 			console.error(err);
 		}
@@ -24,7 +24,7 @@ setInterval(
 
 function cleanse(){
 	console.log('working');
-	db.query(cleanse_query, (err, results) => {
+	pool.query(cleanse_query, (err, results) => {
 	if (err) {
 		console.error(err);
 	}
