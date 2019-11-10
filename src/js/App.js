@@ -15,9 +15,6 @@ class App extends React.Component {
         <div>
             <h1>this is the main app component</h1>
             <Login />
-            <div>
-            <Dash />
-            </div>
         </div>
       );
     }
