@@ -1,5 +1,4 @@
 import React from 'react';
-
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
@@ -10,6 +9,13 @@ class Login extends React.Component {
 		this.validateForm = this.validateForm.bind(this);
 		this.updateID = this.updateID.bind(this);
 		this.updatePW = this.updatePW.bind(this);
+		this.submitLogin = this.submitLogin.bind(this);
+	}
+
+	submitLogin(){
+		if(this.state.username && this.state.password){
+			this.props.handleSubmit(this.state.username, this.state.password);
+		}
 	}
 
 	validateForm() {
@@ -25,18 +31,22 @@ class Login extends React.Component {
 	}
 
 	render() {
+		const {text} = this.props;
 		return (
-			<form className='center' onSubmit={this.props.handleSubmit}>
-				<h5>Welcome</h5>
+			<form className='center'>
+				<h2>{text.greeting}</h2>
 				<hr></hr>
 				<div>
-					<input onChange={this.updateID} type='text' placeholder='id' id='username' />
+					<input className='textInput' onChange={this.updateID} type='text' placeholder={text.email} id='username' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-					<input onChange={this.updatePW} type='password' placeholder='password' id='password' />
+					<input className='textInput' onChange={this.updatePW} type='password' placeholder={text.password} id='password' onKeyUp={(e) => {if(e.key === 'Enter'){this.submitLogin()}}} />
 				</div>
 				<div>
-					<button onClick={() => this.props.handleSubmit(this.state.username, this.state.password)} type='submit' disabled={!this.validateForm()}>Login</button>
+					<div className='button' onClick={() => this.submitLogin()} type='submit' disabled={!this.validateForm()}>{text.login}</div>
+				</div>
+				<div className='loginError'>
+					{this.props.error ? "Username or password is incorrect." : ''}
 				</div>
 			</form>
 		);
