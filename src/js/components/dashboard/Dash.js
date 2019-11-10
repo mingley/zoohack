@@ -37,7 +37,8 @@ class Dash extends Component{
 		.then(res => console.log(res));
 
 		function parseDate(text){
-			let [month, day, year] = text.split('-');
+            let [month, day, year] = text.split('-');
+            console.log(year, month, day)
 			return new Date(year, month, day);
 		}
 	}
