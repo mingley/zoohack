@@ -36,7 +36,7 @@ class Dash extends Component{
 		.then(res => res.json())
 		.then(res => {
 			this.setState({
-				results: res.results
+				results: res.results || []
 			})
 		});
 		function parseDate(text){
