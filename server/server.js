@@ -27,6 +27,15 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
 	res.send({status: 'success', isAdmin: req.user.isAdmin});
 })
 
+app.get('/logout', function(req, res){
+	if(req.user){
+		req.logout();
+		res.send({status: true});
+	} else {
+		res.send({status: false});
+	}
+})
+
 passport.use(new localStrategy(
   function(username, password, done) {
 		//We need to do a compare whether or not we have this username.

@@ -4,6 +4,8 @@ import Dash from './components/dashboard/Dash';
 import Admin from './components/admin/Admin';
 import languages from './languages.js';
 
+import Logo from '../../img/rhinodark.svg';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,7 @@ class App extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleLanguageChange = this.handleLanguageChange.bind(this);
 		this.toggleAdminSettings = this.toggleAdminSettings.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
 	}
 
 	toggleAdminSettings(status){
@@ -27,10 +30,23 @@ class App extends React.Component {
 	}
 	
 	handleLanguageChange(newLanguage){
-		console.log(this.state);
 		this.setState({
 			currentLanguageName: newLanguage,
 			text: languages[newLanguage].index
+		});
+	}
+
+	handleLogout(){
+		fetch('/logout')
+		.then(res => res.json())
+		.then(res => {
+			if(res.status){
+				this.setState({
+					loggedIn: false,
+					isAdmin: false,
+					showAdminPanel: false
+				})
+			}	
 		});
 	}
 
@@ -84,6 +100,8 @@ class App extends React.Component {
     return (
       <div>
 				<div className='header'>
+				<img src={Logo} width='50' height='50' /><br />
+				<div className='button logoutButton' onClick={this.handleLogout}>Logout</div>
 					{text.language}:<select id='languages' onChange={(e) => this.handleLanguageChange(e.target.value)}>
 						{
 							Object.keys(languages).map(language => {
