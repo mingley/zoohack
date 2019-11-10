@@ -7,7 +7,7 @@ const db = require('./database.js');
 
 router.post('/', (req, res) => {
 	console.log(req.body)
-	const insert_query = `INSERT INTO searches ( tag, location, expiration) VALUES(tag = ?, location = ?, expiration = ?)`
+	const insert_query = `INSERT INTO searches ( tag, location, expiration) VALUES(?, ?, ?)`
 	
 	db.query('SELECT * FROM searches',
 	// [req.body.searchTerm, req.body.location],
