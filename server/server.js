@@ -1,11 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const cors = require('cors');
+
 const searchRouter = require('./add.js');
-
 const app = express();
-
-app.use(cors());
+const db = require('./database.js');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
