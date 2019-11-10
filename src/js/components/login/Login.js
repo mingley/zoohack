@@ -36,7 +36,7 @@ class Login extends React.Component {
 					<input onChange={this.updatePW} type='password' placeholder='password' id='password' />
 				</div>
 				<div>
-					<button onClick={() => this.props.handleSubmit(this.state.username, this.state.password)} type='submit' disabled={!this.validateForm()}>Login</button>
+					<div onClick={() => this.props.handleSubmit(this.state.username, this.state.password)} type='submit' disabled={!this.validateForm()}>Login</div>
 				</div>
 			</form>
 		);

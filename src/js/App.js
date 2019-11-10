@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+			loggedIn: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,7 +19,14 @@ class App extends React.Component {
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(res => res.json())
+			.then(res => res.json())
+			.then(res => {
+				if(res.status === "success"){
+					this.setState({
+						loggedIn: true
+					})
+				}
+			})
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response));
   }
@@ -27,7 +34,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Login handleSubmit={this.handleSubmit} />
+				{ this.state.loggedIn ? 
+					<Dash /> :
+					<Login handleSubmit={this.handleSubmit} />
+				}
       </div>
     );
   }
