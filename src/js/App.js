@@ -99,7 +99,7 @@ class App extends React.Component {
       <div>
 				<div className='header'>
 				<img src={Logo} width='50' height='50' /><br />
-				<div className='button logoutButton' onClick={this.handleLogout}>Logout</div>
+				<div className='button logoutButton' onClick={this.handleLogout}>Logout</div><br />
 					{text.language}:<select id='languages' onChange={(e) => this.handleLanguageChange(e.target.value)}>
 						{
 							Object.keys(languages).map(language => {
