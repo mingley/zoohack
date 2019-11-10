@@ -7,4 +7,33 @@ const pool  = mysql.createPool({
   database : 'wildflag'
 })
 
+const cleanse_query = `DELETE FROM searches WHERE expiration < (UNIX_TIMESTAMP());`
+
+setInterval(
+	function(){
+		db.query(cleanse_query, (err, results) => {
+		if (err) {
+			console.error(err);
+		}
+		else {
+			console.log('expired entries removed')
+		}
+}
+);
+}, 1000 * 60 * 60);
+
+function cleanse(){
+	console.log('working');
+	db.query(cleanse_query, (err, results) => {
+	if (err) {
+		console.error(err);
+	}
+	else {
+		console.log('expired entries removed')
+	}
+}
+);
+}
+
+cleanse();
 module.exports = pool;
