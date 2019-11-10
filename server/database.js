@@ -10,7 +10,7 @@ const pool  = mysql.createPool({
 const cleanse_query = `DELETE FROM searches WHERE expiration < ?`
 
 function cleanse(){
-	console.log('cleanse time', Date.now())
+	console.log('cleanse time', Date.now()/1000)
 	pool.query(cleanse_query,[Math.floor(Date.now()/1000)], (err, results) => {
 	if (err) {
 		console.error(err);
