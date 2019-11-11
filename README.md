@@ -1,31 +1,20 @@
-# React Starter w/ Express Server, using Parcel
+# zoohackathon project - San Diego, CA
 
-This is a project template that can be used to quickly start a react project. It has minimal dependencies and has a server route that you can use to proxy requests without exposing your api keys.
+## overview
+This is an Interagency Deconfliction Applcation that creates a simple, secure, yet profoundly effective centralized deconfliction portal for distributing counter-poaching efforts. This app has administrator provided credentials, upon which given will allow users to enter locations and associated activities along with an expiration time. These searches will input the information into a deployed mySQL database and return if there are any conflicting entries made by other agencies. If there are overlapping activities(i.e two agencies working in the same area/or similar activity) a notification will be provided and contact information to the conflicting agency will be returned to the user.
 
-## Getting Started
+## technologies
+react, mysql, node, passport.js, bcrypt, hosted by digital ocean(at the time of presentation during hackathon)
 
-Install dependencies:
-```
-$ npm install
-```
+## powerpoint
+https://docs.google.com/presentation/d/1erlr1qBebVuNsqBNQl6Bq3u5Qvt39ZQdOVUglUwJmpc/edit?usp=sharing
 
-Run the build
-```
-$ npm run build
-```
+## built with 
+javascript, html, css, mysql
 
-Start the server
-```
-$ npm run start
-```
-
-## Use case
-
-When you create a request to a third party API from the server side (to protect your API key/credentials) you should create a `.env` file with your key.
-
-This will ensure that your private credentials do not get committed to git and will not be exposed to others on Github.
-
-You will also need to modify the `server/server.js` file to make your call to your api url and return back your data to your front end.
-
-An example of a request to a mock server is shown in the file. You will replace this with the API you want data from.
+# team
+<a> http://www.github.com/kelgand </a><br>
+<a> http://www.github.com/heclack </a><br>
+<a> http://www.github.com/jinkim-tech </a><br>
+<a> http://www.github.com/mikasd </a>
 
