@@ -18,3 +18,15 @@ javascript, html, css, mysql
 <a> http://www.github.com/jinkim-tech </a><br>
 <a> http://www.github.com/mikasd </a>
 
+
+## build
+
+Use Node.js 22.22.3+, 24.15.0+, or 26+ (as required by cssnano 9).
+Run `npm ci`, then `npm run build` (`npm run buildWindows` is the portable
+build command). Parcel 2 uses its built-in JSX/browser transpilation and the
+explicit Sass transformer. The generated website is written to `dist`.
+The server additionally requires the existing MySQL and environment configuration.
+
+Run `npm test` after building for native bcrypt and server login/session smoke
+checks. These tests use a database double and do not access MySQL. bcrypt 6
+replaces bcrypt 3, whose native addon cannot build on the supported Node versions.
